@@ -38,7 +38,7 @@ jobs:
   steps:
   - template: .ci/azure-pipelines/docker.yml
 
-- job: bionic_gcc_dartpy_release
+- job: dartpy_bionic_gcc_release
   pool:
     vmImage: 'ubuntu-16.04'
   variables:
@@ -71,6 +71,22 @@ jobs:
     OS_NAME: osx
     BUILD_TYPE: Debug
     BUILD_DIR: $(Build.SourcesDirectory)
+  steps:
+  - script: |
+      '.ci/install.sh'
+    displayName: 'Install'
+  - script: |
+      '.ci/script.sh'
+    displayName: 'Script'
+
+- job: dartpy_mojav_clang_release
+  pool:
+    vmImage: 'macOS-10.14'
+  variables:
+    OS_NAME: osx
+    BUILD_TYPE: Debug
+    BUILD_DIR: $(Build.SourcesDirectory)
+    BUILD_DARTPY: ON
   steps:
   - script: |
       '.ci/install.sh'
