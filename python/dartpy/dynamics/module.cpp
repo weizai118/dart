@@ -84,8 +84,8 @@ void dart_dynamics(pybind11::module& m)
   BodyNode(sm);
 
   Joint(sm);
-  RevoluteJoint(sm);
   GenericJoint(sm);
+  RevoluteJoint(sm);
   BallJoint(sm);
   FreeJoint(sm);
 
