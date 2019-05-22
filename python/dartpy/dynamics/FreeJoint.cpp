@@ -50,9 +50,7 @@ void FreeJoint(pybind11::module& m)
 
   ::pybind11::class_<
       dart::dynamics::FreeJoint,
-      dart::dynamics::Joint
-      //      dart::dynamics::GenericJoint<dart::math::SE3Space>
-      >(m, "FreeJoint")
+      dart::dynamics::GenericJoint<dart::math::SE3Space> >(m, "FreeJoint")
       .def(
           "getFreeJointProperties",
           +[](const dart::dynamics::FreeJoint* self)

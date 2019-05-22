@@ -40,6 +40,32 @@ namespace python {
 
 void Joint(pybind11::module& m)
 {
+  ::pybind11::class_<dart::dynamics::detail::JointProperties>(
+      m, "JointProperties")
+      .def(::pybind11::init<>())
+      .def(::pybind11::init<const std::string&>(), ::pybind11::arg("name"))
+      .def_readwrite("mName", &dart::dynamics::detail::JointProperties::mName)
+      .def_readwrite(
+          "mT_ParentBodyToJoint",
+          &dart::dynamics::detail::JointProperties::mT_ParentBodyToJoint)
+      .def_readwrite(
+          "mT_ChildBodyToJoint",
+          &dart::dynamics::detail::JointProperties::mT_ChildBodyToJoint)
+      .def_readwrite(
+          "mIsPositionLimitEnforced",
+          &dart::dynamics::detail::JointProperties::mIsPositionLimitEnforced)
+      .def_readwrite(
+          "mActuatorType",
+          &dart::dynamics::detail::JointProperties::mActuatorType)
+      .def_readwrite(
+          "mMimicJoint", &dart::dynamics::detail::JointProperties::mMimicJoint)
+      .def_readwrite(
+          "mMimicMultiplier",
+          &dart::dynamics::detail::JointProperties::mMimicMultiplier)
+      .def_readwrite(
+          "mMimicOffset",
+          &dart::dynamics::detail::JointProperties::mMimicOffset);
+
   ::pybind11::class_<dart::dynamics::Joint>(m, "Joint")
       .def(
           "hasJointAspect",
